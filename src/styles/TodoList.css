@@ -1,0 +1,43 @@
+.todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-list li {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.todo-list li.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todo-form {
+  margin-bottom: 1rem;
+}
+
+.todo-input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 70%;
+}
+
+.todo-button {
+  padding: 0.5rem 1rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.todo-button:hover {
+  background-color: #45a049;
+}

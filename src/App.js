@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
+import "./styles/App.css";
 
-function App() {
+const App = () => {
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}/todos`)
+      .then((res) => res.json())
+      .then((data) => setTodos(data))
+      .catch((err) => console.error("Error fetching todos:", err));
+  }, []);
+
+  const addTodo = (newTodo) => {
+    fetch(`${process.env.REACT_APP_API_URL}/todos`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newTodo),
+    })
+      .then((res) => res.json())
+      .then((savedTodo) => setTodos([...todos, savedTodo]))
+      .catch((err) => console.error("Error adding todo:", err));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>To-Do List</h1>
+      <TodoForm addTodo={addTodo} />
+      <TodoList todos={todos} />
     </div>
   );
-}
+};
 
 export default App;

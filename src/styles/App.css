@@ -1,0 +1,13 @@
+.app {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 2rem;
+  background-color: #f4f4f9;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  color: #333;
+}
